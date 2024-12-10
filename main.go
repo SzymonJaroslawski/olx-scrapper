@@ -3,6 +3,9 @@ package main
 import (
 	"net/http"
 	"os"
+
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
 )
 
 type Config struct {
@@ -11,6 +14,7 @@ type Config struct {
 }
 
 func main() {
+	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
 }
 
 func configSetup() *Config {
